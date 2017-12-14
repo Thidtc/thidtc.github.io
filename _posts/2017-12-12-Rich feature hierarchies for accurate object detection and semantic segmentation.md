@@ -77,18 +77,19 @@ RCNN中可以使用不同的CNN模型，实验中使用了AlexNet（T-Net）和V
 
 在将产生的区域输入到CNN前，首先需要将区域图片转化为CNN输入对应的227\*227的图片大小，文中提出了以下几种方式
 
-  a. 各向同性缩放
-    i. tightest square with context
+    a. 各向同性缩放
 
-    先将区域扩充到最小的方形区域（tightest square），扩充的区域直接使用原始图片中的内容，如果超出图片边界，则填充区域中颜色的均值，然后再将得到的方形区域缩放到CNN需要的输入大小
+        1. tightest square with context
 
-    ii. tightest square without context
+        先将区域扩充到最小的方形区域（tightest square），扩充的区域直接使用原始图片中的内容，如果超出图片边界，则填充区域中颜色的均值，然后再将得到的方形区域缩放到CNN需要的输入大小
 
-    先将区域扩充到最小的方形区域，扩充的区域填充区域中颜色的均值，然后再将得到的方形区域放缩到CNN需要的输入大小
+        2. tightest square without context
 
-  b. 各向异性缩放
+        先将区域扩充到最小的方形区域，扩充的区域填充区域中颜色的均值，然后再将得到的方形区域放缩到CNN需要的输入大小
 
-  区域的长宽方向进行不同比例的放缩，得到CNN需要的输入大小
+    b. 各向异性缩放
+
+    区域的长宽方向进行不同比例的放缩，得到CNN需要的输入大小
 
 在预处理的过程中，先在原始的区域周围进行padding能够有效地提高模型的结果，RCNN中使用的padding大小为16像素
 
@@ -97,7 +98,7 @@ RCNN中可以使用不同的CNN模型，实验中使用了AlexNet（T-Net）和V
 
 其中A列表示原始的区域，B列表示tightest square with context，C列表示tightest square without context，D列表示各向异性缩放，1、3行表示padding为0的结果，2、4行表示padding为16的结果
   
-	3. 针对不同类别标签的SVM分类器
+3. 针对不同类别标签的SVM分类器
 
 对于所有的物体种类标签，相应的SVM分类器（二分类）对其进行分类
 
