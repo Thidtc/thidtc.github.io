@@ -21,6 +21,7 @@ Ross Girshick Jeff Donahue Trevor Darrell Jitendra Malik UC Berkeley {rbg,jdonah
 ### 3. 前置内容
 
 • IoU（Intersection of Union）
+
 两个区域的交集和并集的比值，能够用来评估两个区域的重叠度
 
 • NMS（Non-Maximum Suppression）
@@ -67,7 +68,7 @@ RCNN模型如下所示
 
 1. 区域生产（region proposal）
 
-通过算法从图片中提取得到与类别标签无关候选区域（使用对应的BB，bouding box表示，之后boundingbox和region会交替使用，但均表示原始图片中的一块区域）。区域生产算法时RCNN中独立的一部分，并不会影响到后续的部分，RCNN中使用了selective search区域生成算法(Uijlings e.l,2013)
+  通过算法从图片中提取得到与类别标签无关候选区域（使用对应的BB，bouding box表示，之后boundingbox和region会交替使用，但均表示原始图片中的一块区域）。区域生产算法时RCNN中独立的一部分，并不会影响到后续的部分，RCNN中使用了selective search区域生成算法(Uijlings e.l,2013)
 
 2. CNN特征提取
 
@@ -77,23 +78,24 @@ RCNN中可以使用不同的CNN模型，实验中使用了AlexNet（T-Net）和V
 
 在将产生的区域输入到CNN前，首先需要将区域图片转化为CNN输入对应的227\*227的图片大小，文中提出了以下几种方式
 
-    a. 各向同性缩放
+a. 各向同性缩放
 
-        1. tightest square with context
+  * tightest square with context
 
-        先将区域扩充到最小的方形区域（tightest square），扩充的区域直接使用原始图片中的内容，如果超出图片边界，则填充区域中颜色的均值，然后再将得到的方形区域缩放到CNN需要的输入大小
+  先将区域扩充到最小的方形区域（tightest square），扩充的区域直接使用原始图片中的内容，如果超出图片边界，则填充区域中颜色的均值，然后再将得到的方形区域缩放到CNN需要的输入大小
 
-        2. tightest square without context
+  * tightest square without context
 
-        先将区域扩充到最小的方形区域，扩充的区域填充区域中颜色的均值，然后再将得到的方形区域放缩到CNN需要的输入大小
+  先将区域扩充到最小的方形区域，扩充的区域填充区域中颜色的均值，然后再将得到的方形区域放缩到CNN需要的输入大小
 
-    b. 各向异性缩放
+b. 各向异性缩放
 
-    区域的长宽方向进行不同比例的放缩，得到CNN需要的输入大小
+区域的长宽方向进行不同比例的放缩，得到CNN需要的输入大小
 
 在预处理的过程中，先在原始的区域周围进行padding能够有效地提高模型的结果，RCNN中使用的padding大小为16像素
 
 以上的区域处理方式的效果如下图所示
+
 ![](/img/Rich_feature_hierarchies_for_accurate_object_detection_and_semantic_segmentation/model_figure2.png)
 
 其中A列表示原始的区域，B列表示tightest square with context，C列表示tightest square without context，D列表示各向异性缩放，1、3行表示padding为0的结果，2、4行表示padding为16的结果
@@ -140,17 +142,17 @@ RCNN中假设位置的改变通过平移操作，而大小的改变通过log空�
 #### 5.2 训练（training）
 RCNN模型的训练过程分为多个步骤
 
-	• 有监督的预训练（pre-training）
+• 有监督的预训练（pre-training）
 
-	CNN模型在ILSVRC2012 classification任务上进行预训练
+CNN模型在ILSVRC2012 classification任务上进行预训练
 
-	• 针对指定数据（domain-specific）的微调（fine-tuning）
+• 针对指定数据（domain-specific）的微调（fine-tuning）
 
-	首先将CNN最后的针对ImageNet的1000类分类器改成任务相关的N+1类分类器（N是任务的分类数，加上额外的一个类别表示背景），和真实的区域（region）的IoU大于0.5的区域为正样本，其余的区域是负样本，通过SGD进行训练，每个batch的大小为128，其中有32个正样本和96个负样本（由于整体样本中，正样本的数量远小于负样本，通过这种方式，可以向正样本倾斜）
+首先将CNN最后的针对ImageNet的1000类分类器改成任务相关的N+1类分类器（N是任务的分类数，加上额外的一个类别表示背景），和真实的区域（region）的IoU大于0.5的区域为正样本，其余的区域是负样本，通过SGD进行训练，每个batch的大小为128，其中有32个正样本和96个负样本（由于整体样本中，正样本的数量远小于负样本，通过这种方式，可以向正样本倾斜）
 
-	• 目标分类（object category classifiers）
+• 目标分类（object category classifiers）
 
-	对于每个类别，单独训练SVM进行二分类。所有包含真实的区域的区域被作为正样本，而和真实区域的IoU<0.3（grid search得到）的区域作为负样本，其他的区域不使用
+对于每个类别，单独训练SVM进行二分类。所有包含真实的区域的区域被作为正样本，而和真实区域的IoU<0.3（grid search得到）的区域作为负样本，其他的区域不使用
 
 注意到在**fine-tuning和classify的过程中对于正负样本的定义方式是不同的，并且RCNN中重新训练了SVM分类器，而没有直接使用fine-tuning后CNN的softmax**。
 
@@ -158,10 +160,17 @@ RCNN模型的训练过程分为多个步骤
 
 ### 6. 实验结果
 * PASCAL VOC 2010-12 上的结果
-![](/img/Rich_feature_hierarchies_for_accurate_object_detection_and_semantic_segmentation/exp_figure1.png)
+
+  ![](/img/Rich_feature_hierarchies_for_accurate_object_detection_and_semantic_segmentation/exp_figure1.png)
+
 * 使用CNN不同层的输出作为CNN特征
-![](/img/Rich_feature_hierarchies_for_accurate_object_detection_and_semantic_segmentation/exp_figure2.png)
+
+  ![](/img/Rich_feature_hierarchies_for_accurate_object_detection_and_semantic_segmentation/exp_figure2.png)
+
 * 网络模型结构的影响
-![](/img/Rich_feature_hierarchies_for_accurate_object_detection_and_semantic_segmentation/exp_figure3.png)
+
+  ![](/img/Rich_feature_hierarchies_for_accurate_object_detection_and_semantic_segmentation/exp_figure3.png)
+
 * Ablation 实验
-![](/img/Rich_feature_hierarchies_for_accurate_object_detection_and_semantic_segmentation/exp_figure4.png)
+
+  ![](/img/Rich_feature_hierarchies_for_accurate_object_detection_and_semantic_segmentation/exp_figure4.png)
