@@ -2,7 +2,7 @@
 layout:     post
 title:      "Rich feature hierarchies for accurate object detection and semantic segmentation"
 subtitle:   ""
-date:       2017-12-9
+date:       2017-12-12
 author:     "thidtc"
 header-img: "img/2017-bg.jpg"
 catalog: true
@@ -78,7 +78,6 @@ RCNN中可以使用不同的CNN模型，实验中使用了AlexNet（T-Net）和V
 在将产生的区域输入到CNN前，首先需要将区域图片转化为CNN输入对应的227\*227的图片大小，文中提出了以下几种方式
 
   a. 各向同性缩放
-
     i. tightest square with context
 
     先将区域扩充到最小的方形区域（tightest square），扩充的区域直接使用原始图片中的内容，如果超出图片边界，则填充区域中颜色的均值，然后再将得到的方形区域缩放到CNN需要的输入大小
