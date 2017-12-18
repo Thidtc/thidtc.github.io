@@ -37,7 +37,7 @@ $s_t$ 表示t时刻的状态，$o_t$ 表示t时刻的观察结果，$a_t$ 表示
 
 ![](/img/DRL-2017-fall/supervised_learning_and_imitation/part2_figure2.png)
 
-具体地讲，这是因为** 模型学习中使用的 $o_t$ 和实际的 $o_t$ 的概率分布不同 **（distribution drift），即 $p_{data} {o_t } \not= p_{\pi_\theta } {o_t }$
+具体地讲，这是因为**模型学习中使用的 $o_t$ 和实际的 $o_t$ 的概率分布不同**（distribution drift），即 $p_{data} {o_t } \not= p_{\pi_\theta } {o_t }$
 
 一种简单的想法是从 $p_{\pi_\theta } {o_t }$中获取得到训练数据，而不是 $p_{data} {o_t }$
 

@@ -44,7 +44,7 @@ ACL 2017
 ![](/img/Adversarial-Multi-task-Learning-for-Text-Classification/figure4.png)
 
 下面分别介绍这两种损失项
-* 对抗训练   $$ L_{Adv} $$
+* 对抗训练   $ L_{Adv} $
 
   受到GAN(Goodfellow et al., 2014)的启发，本文模型中引入了一个对抗网络，来区分私有特征和共享特征，使得通过共享特征对任务类型的判断是不准确的，从而鼓励共享特征不包含私有特征
 
@@ -54,23 +54,23 @@ ACL 2017
 
   ![](/img/Adversarial-Multi-task-Learning-for-Text-Classification/formula2.png)
 
-  $$ L_{Adv} $$ 用来训练模型，使得模型产生的共享特征不能被对抗网络用来准确地预测问题的类型（从而保证共享特征空间中仅包含不同任务的私有特征）
+  $ L_{Adv} $ 用来训练模型，使得模型产生的共享特征不能被对抗网络用来准确地预测问题的类型（从而保证共享特征空间中仅包含不同任务的私有特征）
   由于包含多个任务，模型扩展了GAN地原始公式到多分类地形式
 
   ![](/img/Adversarial-Multi-task-Learning-for-Text-Classification/formula3.png)
 
 
-  其中 $$d_i^k$$ 表示任务的实际类型（ground-truth label）,整个公式是一个minmax game，对抗网络$$ D $$被训练以最大化分类的准确率，而‘生成网络’$$ E $$（这里指模型中共享特征对应的RNN层）被训练以最小化最终分类的准确率
+  其中 $d_i^k$ 表示任务的实际类型（ground-truth label）,整个公式是一个minmax game，对抗网络$ D $被训练以最大化分类的准确率，而‘生成网络’$ E $（这里指模型中共享特征对应的RNN层）被训练以最小化最终分类的准确率
 
-  注意到，$$L_{Adv}$$ 的训练只依赖于训练数据x，而不依赖任何标签，这使得整体的模型可以通过**半监督**的方式进行训练
+  注意到，$L_{Adv}$ 的训练只依赖于训练数据x，而不依赖任何标签，这使得整体的模型可以通过**半监督**的方式进行训练
 
-* 正交限制  $$ L_{Diff} $$
+* 正交限制  $ L_{Diff} $
 
-  Follow (Jia et al., 2010; Salzmann et al., 2010; Bousmalis et al., 2016)的工作，本文引入了正交限制$$ L_Diff $$ 衡量共享特征和私有特征之间的相似度
+  Follow (Jia et al., 2010; Salzmann et al., 2010; Bousmalis et al., 2016)的工作，本文引入了正交限制$ L_Diff $ 衡量共享特征和私有特征之间的相似度
 
   ![](/img/Adversarial-Multi-task-Learning-for-Text-Classification/formula4.png)
 
-  其中  $$\| ∗ \|_F^2 $$ 是squared Frobenius norm。$S^k$ 和$H^k$ 是两个矩阵，其中的行分贝为共享特征和私有特征（RNN提取的结果）
+  其中  $\| ∗ \|_F^2 $是squared Frobenius norm。$S^k$ 和$H^k$ 是两个矩阵，其中的行分贝为共享特征和私有特征（RNN提取的结果）
 
 最终的目标函数为
 
