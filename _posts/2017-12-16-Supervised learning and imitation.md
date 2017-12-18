@@ -16,13 +16,13 @@ tags:
 
 ![](/img/DRL-2017-fall/supervised_learning_and_imitation/part1_figure1.png)
 
-$$ s_t $$ 表示t时刻的状态，$$ o_t $$ 表示t时刻的观察结果，$$ a_t $$ 表示t时刻采取的动作，$$ \pi_\theta (a_t \|o_t) $$表示策略。
+$ s_t $ 表示t时刻的状态，$ o_t $ 表示t时刻的观察结果，$ a_t $ 表示t时刻采取的动作，$ \pi_\theta (a_t \|o_t) $表示策略。
 
 通常我们假设强化学习过程是一个马可夫决策过程（MDP，Markov Decision Process）
 
 ![](/img/DRL-2017-fall/supervised_learning_and_imitation/part1_figure2.png)
 
-其中$$ p(s_{t+1} \|s_t,a_t) $$是状态转移概率，新时刻的状态仅与旧时刻的状态以及旧时刻的动作有关
+其中$ p(s_{t+1} \|s_t,a_t) $是状态转移概率，新时刻的状态仅与旧时刻的状态以及旧时刻的动作有关
 
 ### 2. 模仿学习（imatation learning）
 一种直觉的强化学习的方式是让机器模仿人类的学习。模仿学习通过人产生得到标记数据，并通过监督学习算法训练得到策略。
@@ -31,15 +31,15 @@ $$ s_t $$ 表示t时刻的状态，$$ o_t $$ 表示t时刻的观察结果，$$ a
 
 ![](/img/DRL-2017-fall/supervised_learning_and_imitation/part2_figure1.png)
 
-司机在驾驶的过程中产生标记数据（$$ o_t $$ 是某时刻相机记录的图片，$$ a_t $$ 是司机同一时刻采取的动作），通过这种方式，可以训练得到策略
+司机在驾驶的过程中产生标记数据（$ o_t $ 是某时刻相机记录的图片，$ a_t $ 是司机同一时刻采取的动作），通过这种方式，可以训练得到策略
 
 但实际上，这种直觉的做法是不可行的，原因在于由于现实环境的复杂性和随机性，模型采取的动作和实际司机采取的动作不能完全相同，这个过程产生了误差，这种误差会不断地累计，导致最终模型得到的状态和实际司机驾驶得到的状态差异很大，如下图所示
 
 ![](/img/DRL-2017-fall/supervised_learning_and_imitation/part2_figure2.png)
 
-具体地讲，这是因为** 模型学习中使用的 $$ o_t $$ 和实际的 $$ o_t $$ 的概率分布不同 **（distribution drift），即 $$ p_{data} {o_t } \not= p_{\pi_\theta } {o_t } $$
+具体地讲，这是因为** 模型学习中使用的 $ o_t $ 和实际的 $ o_t $ 的概率分布不同 **（distribution drift），即 $ p_{data} {o_t } \not= p_{\pi_\theta } {o_t } $
 
-一种简单的想法是从 $$ p_{\pi_\theta } {o_t } $$中获取得到训练数据，而不是 $$ p_{data} {o_t } $$
+一种简单的想法是从 $ p_{\pi_\theta } {o_t } $中获取得到训练数据，而不是 $ p_{data} {o_t } $
 
 这种想法对应的算法是Dagger
 
