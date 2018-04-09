@@ -80,7 +80,7 @@ $$ \alpha(h,u)=w_{(s)}^T [h;u;hοu] $$
 ![](/img/Bi_Directional_Attention_Flow_For_Machine_Comprehension/model_figure7.png)
 
 其中
-$$ \beta(h, \tilda{u},\tilda{h})=[h;\tilda{u};hο\tilda{u};hο\tilda{h}] $$
+$$ \beta(h, \tilde{u},\tilde{h})=[h;\tilde{u};hο\tilde{u};hο\tilde{h}] $$
 
 #### 4.5 Modeling Layer
 

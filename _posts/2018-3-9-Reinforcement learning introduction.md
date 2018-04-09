@@ -8,7 +8,7 @@ header-img: "img/2017-bg.jpg"
 catalog: true
 mathjax: true
 tags:
-    - Reinforcement learning
+		- Reinforcement learning
 ---
 
 ### 1. 马可夫链（Markov chain）
@@ -141,27 +141,27 @@ Q-function和value function在很多的RL算法中都有使用，主要使用的
 
 1. 如果我们有policy $ \pi $ ，并且知道该policy下的Q-function值 $ Q^\pi (s, a) $ ，则可以通过以下方式优化当前的policy $ \pi ' $ （Q-learning的出发点）
 
-    当动作a满足
+		当动作a满足
 
-    ![](/img/reinforcement_learning_introduction/part5_figure5.png)
+		![](/img/reinforcement_learning_introduction/part5_figure5.png)
 
-    设置
+		设置
 
-    ![](/img/reinforcement_learning_introduction/part5_figure6.png)
+		![](/img/reinforcement_learning_introduction/part5_figure6.png)
 
-    易知，无论当前policy $\pi$ 如何，policy $\pi '$ 至少和 $\pi$ 一样好
+		易知，无论当前policy $\pi$ 如何，policy $\pi '$ 至少和 $\pi$ 一样好
 
 2. 计算梯度，增加一个好的动作a的概率(PG的出发点)
 
-    易知，当动作a满足
+		易知，当动作a满足
 
-    ![](/img/reinforcement_learning_introduction/part5_figure7.png)
+		![](/img/reinforcement_learning_introduction/part5_figure7.png)
 
-    则动作a比该状态下所有动作的平均水平要好，因此当
+		则动作a比该状态下所有动作的平均水平要好，因此当
 
-    ![](/img/reinforcement_learning_introduction/part5_figure8.png)
+		![](/img/reinforcement_learning_introduction/part5_figure8.png)
 
-    可以通过修改策略policy，来增加policy选择动作a的概率
+		可以通过修改策略policy，来增加policy选择动作a的概率
 
 ### 6. 强化学习算法类型
 
@@ -187,45 +187,49 @@ Q-function和value function在很多的RL算法中都有使用，主要使用的
 
 ![](/img/reinforcement_learning_introduction/part6_figure5.png)
 
-  - planning（no explicit policy）
+	- planning（no explicit policy）
 
-    Trajectory optimization/optimal control 
+		Trajectory optimization/optimal control 
 
-    Discrete planning in discrete action spaces – e.g., Monte Carlo tree search
+		Discrete planning in discrete action spaces – e.g., Monte Carlo tree search
 
-  - 更新policy
+	- 更新policy
 
-    通过一定的方式将误差反向传导到policy中
+		通过一定的方式将误差反向传导到policy中
 
-    使用model学习value function
+		使用model学习value function
 
-        Dynamic programming
+				Dynamic programming
 
-        Dyna
+				Dyna
 
 #### 6.2 不同类型算法类型下的典型算法
 
 * Value function fitting
 
-    Q-learing, DQN
-    Temporal difference learning
-    Fitted value iteration
+	* Q-learing, DQN
+
+	*	Temporal difference learning
+
+	*	Fitted value iteration
 
 * Policy gradient
 
-    REINFORCE
-    Natural policy gradient
-    Trust region policy optimization
+	* REINFORCE
+
+	* Natural policy gradient
+
+	* Trust region policy optimization
 
 * Actor-critic
 
-    Asynchronous advantage actor critic(A3C)
+	* Asynchronous advantage actor critic(A3C)
 
 * Model-based
 
-    Dyna
+	* Dyna
 
-    Guided policy search
+	* Guided policy search
 
 ### 7. 强化学习算法的选择
 
@@ -237,7 +241,7 @@ Q-function和value function在很多的RL算法中都有使用，主要使用的
 
 		不同的算法有不同的采样效率
 
-    ![](/img/reinforcement_learning_introduction/part6_figure4.png)
+		![](/img/reinforcement_learning_introduction/part6_figure4.png)
 
 		
 	* 算法的稳定性和易用性
