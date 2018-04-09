@@ -8,7 +8,7 @@ header-img: "img/2017-bg.jpg"
 catalog: true
 mathjax: true
 tags:
-		- Reinforcement learning
+    - Reinforcement learning
 ---
 
 ### 1. 马可夫链（Markov chain）

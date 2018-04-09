@@ -8,7 +8,7 @@ header-img: "img/2017-bg.jpg"
 catalog: true
 mathjax: true
 tags:
-	- Reinforcement leaning
+    - Reinforcement leaning
 ---
 
 ### 1. 来源
