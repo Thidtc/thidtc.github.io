@@ -2,7 +2,7 @@
 title: Thidtc's Blog
 SEOTitle: Thidtc's Blog
 header-img: img/2017-bg.jpg
-email: imwdl95@live.com
+email: imwdl95@live.co
 description: ""
 keyword: ""
 url: "http://thidtc.github.io"              # your host, for absolute URL
@@ -42,13 +42,15 @@ bd_share: true                          # whether or not using baidu share
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "专注IT，乐于分享。"
+sidebar-about-description: ""
 sidebar-avatar: /img/avar.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+
+github_username: "Thidtc"
 
 # Featured Tags
 featured-tags: true                     # whether or not using Feature-Tags
 featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
 
 # Friends
-friends: [
-]
+#friends: [
+#]
