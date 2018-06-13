@@ -2,7 +2,7 @@
 layout:     post
 title:      "Some methods for text summarization"
 subtitle:   ""
-date:       2018-4-9
+date:       2018-6-13
 author:     "thidtc"
 header-img: "img/2017-bg.jpg"
 catalog: true
