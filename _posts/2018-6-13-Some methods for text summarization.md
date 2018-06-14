@@ -91,18 +91,18 @@ Many methods use multi-task learning, [8] trains on a text summarization task wi
 ![](/img/Methods_for_text_summarization/hierachical_end_to_end_model.png)
 
 ### References
-[1] TextRank: Bringing Order into Texts
+[1] Mihalcea R, Tarau P. Textrank: Bringing order into text[C]//Proceedings of the 2004 conference on empirical methods in natural language processing. 2004.
 
-[2] Get To The Point: Summarization with Pointer-Generator Networks
+[2] See A, Liu P J, Manning C D. Get to the point: Summarization with pointer-generator networks[J]. arXiv preprint arXiv:1704.04368, 2017.
 
-[3] Global Encoding for Abstractive Summarization
+[3] Lin J, Sun X, Ma S, et al. Global Encoding for Abstractive Summarization[J]. arXiv preprint arXiv:1805.03989, 2018.
 
-[4] A Deep Reinforced Model For Abstrative Summarization
+[4] Paulus R, Xiong C, Socher R. A deep reinforced model for abstractive summarization[J]. arXiv preprint arXiv:1705.04304, 2017.
 
-[5] Self-critical sequence training for image captioning
+[5] Rennie S J, Marcheret E, Mroueh Y, et al. Self-critical sequence training for image captioning[C]//CVPR. 2017, 1(2): 3.
 
-[6] A Unified Model for Extractive and Abstractive Summarization using Inconsistency Loss
+[6] Hsu W T, Lin C K, Lee M Y, et al. A Unified Model for Extractive and Abstractive Summarization using Inconsistency Loss[J]. arXiv preprint arXiv:1805.06266, 2018.
 
-[7] Fast Abstractive Summarization with Reinforce-Selected Sentence Rewriting
+[7] Chen Y C, Bansal M. Fast Abstractive Summarization with Reinforce-Selected Sentence Rewriting[J]. arXiv preprint arXiv:1805.11080, 2018.
 
-[8] A Hierarchical End-to-End Model for Jointly Improving Text Summarization and Sentiment Classification
+[8] Ma S, Sun X, Lin J, et al. A Hierarchical End-to-End Model for Jointly Improving Text Summarization and Sentiment Classification[J]. arXiv preprint arXiv:1805.01089, 2018.
