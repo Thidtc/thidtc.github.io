@@ -45,7 +45,7 @@ In the text summarization task result, the same tri-gram seldem occurs twice in 
 Attention to decoder outputs is now getting used in seq2seq model. [4] proposes to use intra-decoder attention to reduce repetition
 ![](/img/Methods_for_text_summarization/intra_attention.png)
 
-### 4.6 Self-Critical Policy Gradient Algorithm
+#### 3.6 Self-Critical Policy Gradient Algorithm
 Text summarization is a kind of text generation task, and in general, text summarization resort to maximum likelihood objective function in an auto-regressive way
 
 $$
@@ -90,6 +90,14 @@ Many methods use multi-task learning, [8] trains on a text summarization task wi
 
 ![](/img/Methods_for_text_summarization/hierachical_end_to_end_model.png)
 
+#### 5.2 Retrive, Rerank, Rewrite
+When the input text is too long(For example, in Gigaword dataset, many model set the maximum input text length to 400), abstraction methods may fail to generate a good summerization. [9] thus first retrive summerizations of similar texts by using Lucene system, and then rerank the retrieved result, finally, the retrived summerization is feeded into an seq2seq model together with the text to generate a final summerization. In this model, the retrived summerization is regarded as a **soft template**, and the final summerization process is regarded as a template rewriting process based on the template and original text. The frameword of the model is shown in the following picture
+
+![](/img/Methods_for_text_summarization/r3_sum_framework.png)
+
+This model is rather simple, but in fact performs very well.
+
+
 ### References
 [1] Mihalcea R, Tarau P. Textrank: Bringing order into text[C]//Proceedings of the 2004 conference on empirical methods in natural language processing. 2004.
 
@@ -106,3 +114,5 @@ Many methods use multi-task learning, [8] trains on a text summarization task wi
 [7] Chen Y C, Bansal M. Fast Abstractive Summarization with Reinforce-Selected Sentence Rewriting[J]. arXiv preprint arXiv:1805.11080, 2018.
 
 [8] Ma S, Sun X, Lin J, et al. A Hierarchical End-to-End Model for Jointly Improving Text Summarization and Sentiment Classification[J]. arXiv preprint arXiv:1805.01089, 2018.
+
+[9] Retrieve, Rerank and Rewrite: Soft Template Based Neural Summarization
