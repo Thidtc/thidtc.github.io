@@ -49,13 +49,13 @@ A popular strategy to cluster words is based on *frequency*. Words are sorted by
 #### 3.2 Differentiated Softmax
 Differentiated softmax[4] is based on the intuition that words in the vocabulary are not equal, frequent words need more information to predict them, while infrequent ones need less.
 
-So, instead of using a dense $n_hidden * |V|$ matrix, D-softmax uses many small matrices.
+So, instead of using a dense $d_{hidden} * \|V\|$ matrix, D-softmax uses many small matrices.
 
 As shown in following picture
 
 ![](/img/Accelerating_softmax/Dsoftmax_fig1.png)
 
-the dense matrix $d*|A|$ is replaced by the three small matrices $d_A * |A|$, $d_B * |B|$ and $d_C * |C|$. In this way, big matrix multiplication is avoided by doing three small matrix multiplications, so in train and reference phases, computation complixity is reduced.
+the dense matrix $d_{hidden}*\|A\|$ is replaced by the three small matrices $d_A * \|A\|$, $d_B * \|B\|$ and $d_C * \|C\|$. In this way, big matrix multiplication is avoided by doing three small matrix multiplications, so in train and reference phases, computation complixity is reduced.
 
 #### 3.3 Differentiated Softmax[*]
 D-Softmax[*] is similar to D-Softmax, but differs in that it doesn't split the hidden state to samll splits, instead, it uses projection matrices of different size to map the whole hidden state to different words cluster
@@ -79,6 +79,4 @@ Besides, Adaptive Softmax doesn't put all of words in the leaf node, some words 
 
 [5] Efficient softmax approximation for GPUs
 
-[6] 
-
-[*] http://ruder.io/word-embeddings-softmax/index.html#noisecontrastiveestimation
+[6] http://ruder.io/word-embeddings-softmax/index.html#noisecontrastiveestimation
