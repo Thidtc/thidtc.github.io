@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Acceleraing softmax"
+title:      "Accelerating softmax"
 subtitle:   ""
 date:       2018-7-19
 author:     "thidtc"
